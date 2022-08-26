@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'Orientador',
     'Curso',
     'TCC',
+    'accounts',
+
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
