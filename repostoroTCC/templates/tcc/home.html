@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+    <style>
+        .cards {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+    </style>
+{% endblock%}
+
+{% block content %}
+    
+    <a href="{% url 'criaTCC'%}" class="btn btn-success" >adicionar TCC</a>
+    {% if object_list %}
+    <div class="cards">
+        {% for object in object_list %}
+            <div style="width: 25%;"class="card text-center">
+                <div class="card-header">
+                    {{ object.autor }}
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ object.titulo }}</h5>
+                    <p style="max-height:300px;">{{object.resumo}}</p>
+                    <a href="media/{{object.arquivo_documento}}" class="btn btn-primary">Leia este artigo</a>
+                    <a href="{% url 'updateTCC' pk=object.id %}" class="btn btn-info" style="color: white;">Ver Dados</a>
+                </div>
+                <div class="card-footer text-muted">
+                    {{ object.ano_documento }}
+                </div>
+            </div>
+            {% endfor %}
+    </div>
+
+    {% else %}
+        <p>Nenhum TCC cadastrado</p>
+
+    {% endif %}
+{% endblock %}

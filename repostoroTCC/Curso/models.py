@@ -18,3 +18,6 @@ class Curso(models.Model):
         choices=CHOICES_MODALIDADE,
         null=False
     )
+
+    def __str__(self):
+        return self.nome

@@ -4,6 +4,7 @@ from Autor.models import Autor
 from Curso.models import Curso
 from django.contrib.postgres.fields import ArrayField
 
+
 class TCC(models.Model):
 
     titulo = models.CharField(
@@ -32,3 +33,6 @@ class TCC(models.Model):
     )
 
     palavras_chave = ArrayField(models.CharField(max_length=200), blank=True)
+
+    def __str__(self) -> str:
+        return self.titulo

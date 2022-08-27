@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+    <style>
+        .cards {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+    </style>
+
+    <title>Cursos</title>
+{% endblock%}
+
+{% block content %}
+    
+    <a href="{% url 'criaCurso'%}" class="btn btn-success" >adicionar Curso</a>
+    {% if object_list %}
+    <div class="cards">
+        {% for object in object_list %}
+        <div class="card w-50">
+            <div class="card-body">
+              <h5 class="card-title">{{ object.nome }}</h5>
+              <p class="card-text">{{object.modalidade.name }}</p>
+              <a href="{% url 'updateCurso' pk=object.id%}" class="btn btn-primary">Visualizar</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% else %}
+        <p>Nenhum curso cadastrado</p>
+
+    {% endif %}
+{% endblock %}

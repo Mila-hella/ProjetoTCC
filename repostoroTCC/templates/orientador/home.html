@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+    <style>
+        .cards {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+    </style>
+
+    <title>Orientador</title>
+{% endblock%}
+
+{% block content %}
+    
+    <a href="{% url 'criaOrientador'%}" class="btn btn-success" >Adicionar Orientador</a>
+    {% if object_list %}
+    <div class="cards">
+        {% for object in object_list %}
+        <div class="card w-50">
+            <div class="card-body">
+              <a href="{{ object.link_curriculo }}" target="_blank" rel="noopener noreferrer"><h5 class="card-title">{{ object.first_name }} {{object.last_name}}</h5></a>
+              <a href="{% url 'updateOrientador' pk=object.id%}" class="btn btn-primary">Visualizar</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% else %}
+        <p>Nenhum curso cadastrado</p>
+
+    {% endif %}
+{% endblock %}

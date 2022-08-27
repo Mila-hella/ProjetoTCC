@@ -2,19 +2,18 @@
 {% load crispy_forms_tags %}
 
 {% block style %}
-    <title>{{user.get_username}}</title>
+    <title>{{object.titulo}}</title>
 {% endblock %}
 
 {% block content %}
-    <h2>{{user.get_username}}</h2>
+    <h2>{{object.titulo}}</h2>
     <form method="post">
         {% csrf_token %}
         {{ form|crispy }}
         <div class="buttons">
 
             <button class="btn btn-success" type="submit">Salvar</button> 
-            <a href="{% url 'delete' pk=object.id %}">Deletar</a>
-            <a href="{% url 'logout' %}">Sair</a>
+            <a href="{% url 'deleteTCC' pk=object.id %}">Deletar</a>
         </div>
     </form>
 {% endblock %}
