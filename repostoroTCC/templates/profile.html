@@ -13,8 +13,10 @@
         <div class="buttons">
 
             <button class="btn btn-success" type="submit">Salvar</button> 
-            <a href="{% url 'delete' pk=object.id %}">Deletar</a>
-            <a href="{% url 'logout' %}">Sair</a>
+            <a class="btn btn-danger" href="{% url 'delete' pk=object.id %}">Deletar</a>
+            <a class="btn btn-warn" href="{% url 'logout' %}">Sair</a>
+            <br>
+            <a href="{% url 'password' pk=object.id%}">Modificar Senha</a>
         </div>
     </form>
 {% endblock %}
