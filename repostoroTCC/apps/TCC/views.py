@@ -11,6 +11,8 @@ from django.contrib.auth.decorators import login_required
 class TCCListView(ListView):
     model = TCC
     template_name: str = "tcc/home.html"
+    paginate_by = 6
+
 
 @login_required
 def TCCUploadView(request):

@@ -1,5 +1,6 @@
 from multiprocessing import context
 from django.contrib.auth.views import PasswordChangeView
+from django.urls import reverse_lazy
 from .forms import CadastroForm 
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.contrib.auth.models import User 
@@ -8,7 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class UserCreateView(CreateView):
     form_class = CadastroForm
     template_name = 'forms/register.html'
-    success_url = "/"
+    success_url = reverse_lazy('login')
     
     def get_context_data(self, **kwargs):
         context = super(CreateView, self).get_context_data(**kwargs)
