@@ -25,7 +25,7 @@
                 <img src="{{ object.foto.url }}" class="card-img-top" alt="Foto do Autor">
                 <div class="card-body">
                 <h5 class="card-title">{{ object.ultimo_nome}}, {{object.primeiro_nome}}</h5>
-                <a href="{% url 'updateAutor' pk=object.id%}" class="btn btn-primary">Visualizar</a>
+                <a href="{% url 'detailAutor' pk=object.id%}" class="btn btn-primary">Visualizar</a>
                 </div>
             </div>
         {% endfor %}

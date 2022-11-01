@@ -1,19 +1,27 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
+{% load static %}
 
 {% block style %}
-    <title>{{object.titulo}}</title>
+    <title>{{ object.titulo }}</title>
 {% endblock %}
 
 {% block content %}
-    <h2>{{object.titulo}}</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <div class="buttons">
-
-            <button class="btn btn-success" type="submit">Salvar</button> 
-            <a class="btn btn-danger"href="{% url 'deleteTCC' pk=object.id %}">Deletar</a>
+    <a href="{% url 'updateTCC' pk=object.id %}" class="btn btn-dark">atualizar TCC</a>
+    <div class="page-header text-center py-3">
+        <h1>{{ object.titulo }}</h1>
+        <hr>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <p class="h4"><strong>Autor(es): </strong></p>
+            <p class="h4">{{ object.autor.ultimo_nome }}, {{ object.autor.primeiro_nome }}</p>
+            <p class="h4"><strong>Ano de Publicação: </strong>{{ object.ano_documento }}</p>
+            <p class="h4"><strong>Orientador: </strong>{{ object.orientador.first_name }} {{ object.orientador.last_name }}</p>
+            <p class="h4"><strong>Curso:</strong> {{ object.curso.nome }}</p>
+            <p class="h4"><strong>Resumo: </strong></p>
+            <p class="h5">{{ object.resumo }}</p>
+            <p class="h4"><strong>TCC em PDF:</strong> <a href="{{ object.arquivo_documento.url }}">Abrir</a></p>
         </div>
-    </form>
+    </div>
+    
 {% endblock %}

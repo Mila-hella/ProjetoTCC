@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block style %}
+    <title>{{object.primeiro_nome}}</title>
+{% endblock %}
+
+{% block content %}
+    <h2>{{object.primeiro_nome}} {{object.ultimo_nome}}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="buttons" style="margin-top: 20px;">
+
+            <button class="btn btn-success" type="submit">Salvar</button> 
+            <a class="btn btn-danger" href="{% url 'deleteAutor' pk=object.id %}">Deletar</a>
+        </div>
+    </form>
+{% endblock %}

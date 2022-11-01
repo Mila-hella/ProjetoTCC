@@ -1,6 +1,6 @@
 from .models import Autor
 from django.views.generic.list import ListView
-from django.views.generic import DeleteView, UpdateView
+from django.views.generic import DeleteView, UpdateView, DetailView
 from django.urls import reverse_lazy
 from .forms import InsereAutor
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -27,11 +27,15 @@ def AutorUploadView(request):
 class AutorUpdateView(LoginRequiredMixin, UpdateView):
     model = Autor
     fields = "__all__"
-    template_name = "autor/detail.html"
-    success_url = "/"
+    template_name = "autor/update.html"
+    success_url = "/autor/"
 
 #Deletar Usuário
 class AutorDeleteView(LoginRequiredMixin, DeleteView):
     model = Autor
     success_url = "/autor/"
     template_name = "autor/delete.html"
+
+class AutorDetailView(LoginRequiredMixin, DetailView):
+    model = Autor
+    template_name = "autor/detail.html"

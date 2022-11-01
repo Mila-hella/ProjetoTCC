@@ -1,7 +1,5 @@
 from django.db import models
-# from Orientador.models import Orientador
-# from Autor.models import Autor
-# from Curso.models import Curso
+from .validate import validate_year
 from django.contrib.postgres.fields import ArrayField
 
 
@@ -25,7 +23,8 @@ class TCC(models.Model):
         on_delete=models.CASCADE,
     )
     ano_documento = models.IntegerField(
-        verbose_name = "Ano da Publicação do Documento",
+        verbose_name="Ano da Publicação do Documento",
+        validators=[validate_year]
     )
     resumo = models.TextField()
     arquivo_documento = models.FileField(

@@ -1,6 +1,6 @@
 from .models import TCC
 from django.views.generic.list import ListView
-from django.views.generic import DeleteView, UpdateView
+from django.views.generic import DeleteView, UpdateView, DetailView
 from django.urls import reverse_lazy
 from .forms import InsereTCC
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -29,7 +29,7 @@ def TCCUploadView(request):
 class TCCUpdateView(LoginRequiredMixin, UpdateView):
     model = TCC
     fields = "__all__"
-    template_name = "tcc/detail.html"
+    template_name = "tcc/update.html"
     success_url = "/"
 
 #Deletar Usuário
@@ -37,3 +37,7 @@ class TCCDeleteView(LoginRequiredMixin, DeleteView):
     model = TCC
     success_url = "/"
     template_name = "tcc/delete.html"
+
+class TCCDetailView(LoginRequiredMixin, DetailView):
+    model = TCC
+    template_name = "tcc/detail.html"

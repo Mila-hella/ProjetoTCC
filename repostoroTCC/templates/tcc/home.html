@@ -36,7 +36,7 @@
                     <h5 class="card-title">{{ object.titulo }}</h5>
                     <p style="max-height:300px;">{{object.resumo}}</p>
                     <a href="media/{{object.arquivo_documento}}" class="btn btn-primary">Leia este artigo</a>
-                    <a href="{% url 'updateTCC' pk=object.id %}" class="btn btn-info" style="color: white;">Ver Dados</a>
+                    <a href="{% url 'detailTCC' pk=object.id %}" class="btn btn-info" style="color: white;">Ver Dados</a>
                 </div>
                 <div class="card-footer text-muted">
                     {{ object.ano_documento }}

@@ -14,9 +14,8 @@
 
             <button class="btn btn-success" type="submit">Salvar</button> 
             <a class="btn btn-danger" href="{% url 'delete' pk=object.id %}">Deletar</a>
-            <a class="btn btn-warn" href="{% url 'logout' %}">Sair</a>
-            <br>
-            <a href="{% url 'password' pk=object.id%}">Modificar Senha</a>
+            <a class="btn btn-outline-danger" href="{% url 'logout' %}">Sair</a>
+            <a href="{% url 'password' pk=object.id%}" class="btn btn-dark">Modificar Senha</a>
         </div>
     </form>
 {% endblock %}
